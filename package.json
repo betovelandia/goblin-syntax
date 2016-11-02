@@ -1,10 +1,10 @@
 {
-  "name": "template-syntax",
+  "name": "goblin-syntax",
   "theme": "syntax",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "private": false,
-  "description": "A template syntax theme to build from",
-  "repository": "https://github.com/atom/template-syntax",
+  "description": "ES6 JS JSX Theme",
+  "repository": "https://github.com/betovelandia/goblin-syntax",
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
