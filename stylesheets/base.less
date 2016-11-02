@@ -1,11 +1,6 @@
 @import "syntax-variables";
 
-.editor-colors {
-  background-color: @syntax-background-color;
-  color: @syntax-text-color;
-}
-
-.editor {
+atom-text-editor, :host {
   background-color: @syntax-background-color;
   color: @syntax-text-color;
 
@@ -56,6 +51,17 @@
   }
 }
 
+atom-text-editor .search-results .marker .region,
+:host .search-results .marker .region {
+  background-color: transparent;
+  border: 1px solid @syntax-result-marker-color;
+}
+
+atom-text-editor .search-results .marker.current-result .region,
+:host .search-results .marker.current-result .region {
+  border: 1px solid @syntax-result-marker-color-selected;
+}
+
 .comment {
   color: @light-gray;
 }
@@ -63,7 +69,6 @@
 .entity {
   &.name.type {
     color: @light-orange;
-    text-decoration: underline;
   }
 
   &.other.inherited-class {
@@ -75,11 +80,23 @@
   color: @purple;
 
   &.control {
+    color: @red;
+
+    &.php {
+      color: @purple;
+    }
+  }
+
+  &.control.at-rule {
     color: @purple;
+
+    .keyword {
+      color: @cyan;
+    }
   }
 
   &.operator {
-    color: @syntax-text-color;
+    color: @cyan;
   }
 
   &.other.special-method {
@@ -87,23 +104,27 @@
   }
 
   &.other.unit {
-    color: @orange;
+    color: @light-orange;
   }
 }
 
 .storage {
   color: @purple;
+
+  &.modifier.php {
+    color: @very-light-gray;
+  }
 }
 
 .constant {
-  color: @orange;
+  color: @light-orange;
 
   &.character.escape {
     color: @cyan;
   }
 
   &.numeric {
-    color: @orange;
+    color: @light-orange;
   }
 
   &.other.color {
@@ -115,15 +136,27 @@
   }
 }
 
+.type {
+  color: @purple;
+
+  &.property-name {
+    color: @cyan;
+  }
+}
+
 .variable {
   color: @red;
 
-  &.interpolation {
-    color: darken(@red, 10%);
+  &.other {
+    color: @very-light-gray;
+
+    &.less {
+      color: @red;
+    }
   }
 
   &.parameter.function {
-    color: @syntax-text-color;
+    color: @light-orange;
   }
 }
 
@@ -155,11 +188,16 @@
       color: @light-gray;
     }
 
+    &.begin,
+    &.end {
+      color: @cyan;
+    }
+
     &.string,
     &.variable,
     &.parameters,
     &.array {
-      color: @syntax-text-color;
+      color: @cyan;
     }
 
     &.heading,
@@ -169,7 +207,7 @@
 
     &.bold {
       color: @light-orange;
-      font-style: bold;
+      font-weight: bold;
     }
 
     &.italic {
@@ -179,22 +217,18 @@
   }
 
   &.section.embedded {
-    color: darken(@red, 10%);
+    color: @light-orange;
   }
 
 }
 
 .support {
   &.class {
-    color: @light-orange;
+    color: @purple;
   }
 
   &.function  {
-    color: @cyan;
-
-    &.any-method {
-      color: @blue;
-    }
+    color: @blue;
   }
 }
 
@@ -213,14 +247,17 @@
 
   &.name.tag {
     color: @red;
-    text-decoration: underline;
   }
 
   &.other.attribute-name {
-    color: @orange;
+    color: @cyan;
+
+    &.class {
+      color: @green;
+    }
 
     &.id {
-      color: @blue;
+      color: @orange;
     }
   }
 }
@@ -234,12 +271,17 @@
     color: @orange;
   }
 
+  &.function-call,
   &.require {
     color: @blue;
   }
 
   &.selector {
     color: @purple;
+  }
+
+  &.tag {
+    color: @cyan;
   }
 
   &.separator {
@@ -296,9 +338,14 @@
   -webkit-font-smoothing: auto;
   &.heading {
     color: @green;
+
+    .marker {
+      color: @cyan;
+    }
   }
 }
 
-.editor.mini .scroll-view {
+atom-text-editor[mini] .scroll-view,
+:host([mini]) .scroll-view {
   padding-left: 1px;
 }
