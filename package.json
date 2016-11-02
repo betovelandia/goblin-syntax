@@ -1,7 +1,7 @@
 {
   "name": "goblin-syntax",
   "theme": "syntax",
-  "version": "0.4.1",
+  "version": "1.0.0",
   "private": false,
   "description": "ES6 JS JSX Theme",
   "repository": "https://github.com/betovelandia/goblin-syntax",
