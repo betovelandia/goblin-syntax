@@ -66,37 +66,15 @@ atom-text-editor .search-results .marker.current-result .region,
   color: @light-gray;
 }
 
-.entity {
-  &.name.type {
-    color: @light-orange;
-  }
-
-  &.other.inherited-class {
-    color: @green;
-  }
-}
-
 .keyword {
   color: @purple;
 
   &.control {
-    color: @red;
-
-    &.php {
-      color: @purple;
-    }
-  }
-
-  &.control.at-rule {
     color: @purple;
-
-    .keyword {
-      color: @cyan;
-    }
   }
 
   &.operator {
-    color: @cyan;
+    color: @syntax-text-color;
   }
 
   &.other.special-method {
@@ -104,27 +82,23 @@ atom-text-editor .search-results .marker.current-result .region,
   }
 
   &.other.unit {
-    color: @light-orange;
+    color: @orange;
   }
 }
 
 .storage {
   color: @purple;
-
-  &.modifier.php {
-    color: @very-light-gray;
-  }
 }
 
 .constant {
-  color: @light-orange;
+  color: @orange;
 
   &.character.escape {
     color: @cyan;
   }
 
   &.numeric {
-    color: @light-orange;
+    color: @orange;
   }
 
   &.other.color {
@@ -136,27 +110,15 @@ atom-text-editor .search-results .marker.current-result .region,
   }
 }
 
-.type {
-  color: @purple;
-
-  &.property-name {
-    color: @cyan;
-  }
-}
-
 .variable {
   color: @red;
 
-  &.other {
-    color: @very-light-gray;
-
-    &.less {
-      color: @red;
-    }
+  &.interpolation {
+    color: darken(@red, 10%);
   }
 
   &.parameter.function {
-    color: @light-orange;
+    color: @syntax-text-color;
   }
 }
 
@@ -188,16 +150,11 @@ atom-text-editor .search-results .marker.current-result .region,
       color: @light-gray;
     }
 
-    &.begin,
-    &.end {
-      color: @cyan;
-    }
-
     &.string,
     &.variable,
     &.parameters,
     &.array {
-      color: @cyan;
+      color: @syntax-text-color;
     }
 
     &.heading,
@@ -217,18 +174,25 @@ atom-text-editor .search-results .marker.current-result .region,
   }
 
   &.section.embedded {
-    color: @light-orange;
+    color: darken(@red, 10%);
+  }
+  &.terminator {
+    color: @syntax-text-color;
   }
 
 }
 
 .support {
   &.class {
-    color: @purple;
+    color: @light-orange;
   }
 
   &.function  {
-    color: @blue;
+    color: @cyan;
+
+    &.any-method {
+      color: @blue;
+    }
   }
 }
 
@@ -236,7 +200,14 @@ atom-text-editor .search-results .marker.current-result .region,
   &.name.function {
     color: @blue;
   }
+  &.name.type {
+    color: @light-orange;
+    text-decoration: underline;
+  }
 
+  &.other.inherited-class {
+    color: @green;
+  }
   &.name.class, &.name.type.class {
     color: @light-orange;
   }
@@ -247,17 +218,14 @@ atom-text-editor .search-results .marker.current-result .region,
 
   &.name.tag {
     color: @red;
+    text-decoration: underline;
   }
 
   &.other.attribute-name {
-    color: @cyan;
-
-    &.class {
-      color: @green;
-    }
+    color: @orange;
 
     &.id {
-      color: @orange;
+      color: @blue;
     }
   }
 }
@@ -271,7 +239,6 @@ atom-text-editor .search-results .marker.current-result .region,
     color: @orange;
   }
 
-  &.function-call,
   &.require {
     color: @blue;
   }
@@ -280,14 +247,11 @@ atom-text-editor .search-results .marker.current-result .region,
     color: @purple;
   }
 
-  &.tag {
-    color: @cyan;
-  }
-
   &.separator {
     background-color: @gray;
     color: @syntax-text-color;
   }
+
 }
 
 .none {
@@ -338,10 +302,6 @@ atom-text-editor .search-results .marker.current-result .region,
   -webkit-font-smoothing: auto;
   &.heading {
     color: @green;
-
-    .marker {
-      color: @cyan;
-    }
   }
 }
 
